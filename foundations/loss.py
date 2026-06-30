@@ -10,7 +10,7 @@ class Solution:
         # Hint: add a small epsilon (1e-7) to y_pred to avoid log(0)
         # return round(your_answer, 4)
         eps = 1e-7
-        y_pred = y_pred + eps
+        y_pred = np.clip(y_pred, eps, 1 - eps)
         L = -np.mean(y_true*np.log(y_pred) + (1- y_true)*np.log(1-y_pred))
         return np.round(L,4)
 
@@ -20,6 +20,6 @@ class Solution:
         # Hint: add a small epsilon (1e-7) to y_pred to avoid log(0)
         # return round(your_answer, 4)
         eps = 1e-7
-        y_pred = y_pred + eps
+        y_pred = np.clip(y_pred, eps, 1 - eps)
         L = -np.mean(np.sum(y_true * np.log(y_pred), axis=1))
         return np.round(L,4)
